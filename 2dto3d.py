@@ -60,7 +60,10 @@ def generate_pointcloud(rgb_file,depth_file,ply_file):
     
     """
     rgb = Image.open(rgb_file)
+    rgb = rgb.convert('RGB')
     depth = Image.open(depth_file)
+    depth = depth.convert('L')
+    print(depth.mode)
     
     if rgb.size != depth.size:
         raise Exception("Color and depth image do not have the same resolution.")
